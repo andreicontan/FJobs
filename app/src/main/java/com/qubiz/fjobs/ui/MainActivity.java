@@ -1,14 +1,16 @@
 package com.qubiz.fjobs.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
 import com.qubiz.fjobs.data.JobReward;
 import com.qubiz.fjobs.network.JobApiCalls;
-import com.qubiz.fjobs.util.DataUtils;
 
 import java.util.List;
 
@@ -23,14 +25,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        testPostJob(); //TODO to be removed
-        testGetJobs(); //TODO to be removed
+        Button createJobButton = (Button) findViewById(R.id.create_job_button);
+        createJobButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startJobActivityIntent = new Intent(MainActivity.this, CreateJobActivity.class);
+                startActivity(startJobActivityIntent);
+            }
+        });
 
     }
 
     private void testPostJob() {
         JobReward jobReward = new JobReward("bilet untold", "");
-        Job testJob = new Job(DataUtils.nextValue(), "description1", "title1", null, "Cluj", "Piata muzeului, nr. 5",
+        Job testJob = new Job(313232, "description1", "title1", null, "Cluj", "Piata muzeului, nr. 5",
                 30, "06.07.2017", "08.07.2017", "09.07.2017", 5, jobReward);
 
         JobApiCalls.postNewJob(testJob, new Callback<String>() {

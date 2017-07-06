@@ -2,6 +2,7 @@ package com.qubiz.fjobs.data;
 
 
 import com.google.gson.annotations.SerializedName;
+import com.qubiz.fjobs.util.DataUtils;
 
 public class Job {
     private int id;
@@ -27,6 +28,10 @@ public class Job {
 
     @SerializedName("reward")
     private JobReward jobReward;
+
+    public Job() {
+        this.id = DataUtils.nextValue();
+    }
 
     public Job(int id, String description, String title, String photo, String city, String address, int estimatedTime, String createdDate, String startDate, String endDate, int difficulty, JobReward jobReward) {
         this.id = id;
@@ -89,5 +94,49 @@ public class Job {
 
     public JobReward getJobReward() {
         return jobReward;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setEstimatedTime(int estimatedTime) {
+        this.estimatedTime = estimatedTime;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setJobReward(JobReward jobReward) {
+        this.jobReward = jobReward;
     }
 }

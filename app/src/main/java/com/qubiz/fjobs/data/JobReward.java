@@ -8,6 +8,9 @@ public class JobReward {
     private String value;
     private String description;
 
+    public JobReward() {
+    }
+
     public JobReward(String value, String description) {
         this.value = value;
         this.description = description;
@@ -19,5 +22,13 @@ public class JobReward {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
