@@ -6,7 +6,9 @@ import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
+import com.qubiz.fjobs.data.JobReward;
 import com.qubiz.fjobs.network.JobApiCalls;
+import com.qubiz.fjobs.util.DataUtils;
 
 import java.util.List;
 
@@ -21,7 +23,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        testPostJob(); //TODO to be removed
         testGetJobs(); //TODO to be removed
+
+    }
+
+    private void testPostJob() {
+        JobReward jobReward = new JobReward("bilet untold", "");
+        Job testJob = new Job(DataUtils.nextValue(), "description1", "title1", null, "Cluj", "Piata muzeului, nr. 5",
+                30, "06.07.2017", "08.07.2017", "09.07.2017", 5, jobReward);
+
+        JobApiCalls.postNewJob(testJob, new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(MainActivity.this, response.body(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void testGetJobs() {

@@ -59,5 +59,7 @@ public class JobApiCalls {
         getJobService().getAllJobs().enqueue(requestCallback);
     }
 
-
+    public static void postNewJob(Job job, Callback<String> requestCallback) {
+        getJobService().postJob(job).enqueue(requestCallback);
+    }
 }
