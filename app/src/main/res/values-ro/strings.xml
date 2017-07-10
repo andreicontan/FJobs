@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">FJobs</string>
     <string name="title">Titlu</string>
+    <string name="description">Descriere</string>
+    <string name="city">Oras</string>
+    <string name="address">Adresa</string>
+    <string name="days">Zile</string>
+    <string name="hours">Ore</string>
+    <string name="minutes">Minute</string>
 </resources>
