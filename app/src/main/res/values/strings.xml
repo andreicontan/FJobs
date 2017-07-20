@@ -8,5 +8,8 @@
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="estimatedWorkTime">Estimated Work Time</string>
+    <string name="createdDate">Available From</string>
+    <string name="endDate">Expires On</string>
+    <string name="reward">Enter a reward for job completion</string>
     <string name="save">Save</string>
 </resources>

@@ -127,6 +127,30 @@
 
         </LinearLayout>
 
+        // Available from
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
+            android:hint="@string/createdDate"
+            android:id="@+id/createdDate"
+            android:focusable="false"
+            />
+
+        // Expires On
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
+            android:hint="@string/endDate"
+            android:id="@+id/endDate"
+            android:focusable="false"
+            />
+
+        // Difficulty
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,31 +160,28 @@
             />
 
         <RatingBar
-            android:id="@+id/difficulty"
+            android:id="@+id/difficultyBar"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:isIndicator="true"
             android:numStars="5"
-            android:stepSize="0.1" />
+            android:stepSize="0.5"
+            android:layout_marginBottom="@dimen/activity_general_margin"/>
 
+        //Reward
 
-        <Button
-            android:id="@+id/button"
+        <EditText
+            android:id="@+id/address_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:hint="@string/reward"/>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_general_margin"
+            android:layout_marginBottom="@dimen/activity_general_margin"
             android:text="@string/save" />
 
     </LinearLayout>

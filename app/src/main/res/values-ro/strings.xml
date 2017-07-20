@@ -7,4 +7,7 @@
     <string name="days">Zile</string>
     <string name="hours">Ore</string>
     <string name="minutes">Minute</string>
+    <string name="createdDate">Valabil din</string>
+    <string name="endDate">Expira in</string>
+    <string name="reward">Introduceti recompensa pentru completarea job-ului</string>
 </resources>

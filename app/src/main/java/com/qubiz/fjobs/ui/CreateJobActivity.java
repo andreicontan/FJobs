@@ -51,10 +51,10 @@ public class CreateJobActivity extends AppCompatActivity {
     private int hours;
     private Spinner minutesSpinner;
     private int minutes;
-
-    Button button;
-    TextView textView;
-    private static final int MY_PERMISSION_REQUEST_LOCATION=1;
+    private RatingBar difficultyBar;
+    private float difficulty;
+    public DatePickerDialog myDialog;
+    Calendar myCalendar = Calendar.getInstance();
 
 
     //TODO declare all layout resources
@@ -64,32 +64,56 @@ public class CreateJobActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job);
 
-        button = (Button) findViewById(R.id.button);
-        textView = (TextView) findViewById(R.id.textView);
+        final EditText createdDateText = (EditText) findViewById(R.id.createdDate);
+        final EditText endDateText = (EditText) findViewById(R.id.endDate);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        createdDateText.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void OnClick(View view) {
-                if(ContextCompat.checkSelfPermission(CreateJobActivity.this,
-                        android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(CreateJobActivity.this,
-                            android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                        ActivityCompat.requestPermissions(CreateJobActivity.this,
-                                new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSION_REQUEST_LOCATION);
-                    } else {
-                        ActivityCompat.requestPermissions(CreateJobActivity.this,
-                                new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSION_REQUEST_LOCATION);
+            public void onClick(View v) {
+                myDialog = new DatePickerDialog(CreateJobActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
+                        Toast toast = Toast.makeText(CreateJobActivity.this, date, Toast.LENGTH_SHORT);
+                        toast.show();
+                        createdDateText.setText(date);
                     }
-                } else {
-                    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                    Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                    try {
-                        textView.setText(hereLocation(location.getLatitude(), location.getLongitude()));
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(CreateJobActivity.this, "Not found!", Toast.LENGTH_SHORT).show();
+                },  myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH));;
+                myDialog.show();
+            }
+        });
+
+        endDateText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                myDialog = new DatePickerDialog(CreateJobActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
+                        Toast toast = Toast.makeText(CreateJobActivity.this, date, Toast.LENGTH_SHORT);
+                        toast.show();
+                        endDateText.setText(date);
                     }
-                }
+                },  myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH));;
+                myDialog.show();
+            }
+        });
+
+        difficultyBar= (RatingBar) findViewById(R.id.difficultyBar);
+        difficultyBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar difficultyBar, float rating, boolean fromUser) {
+                Toast.makeText(CreateJobActivity.this, String.valueOf(rating), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,46 +129,6 @@ public class CreateJobActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions , int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSION_REQUEST_LOCATION: {
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(ContextCompat.checkSelfPermission(CreateJobActivity.this,
-                            android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-                        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                        try {
-                            textView.setText(hereLocation(location.getLatitude(), location.getLongitude()));
-                        } catch(Exception e) {
-                            e.printStackTrace();
-                            Toast.makeText(CreateJobActivity.this, "Not found!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                } else {
-                    Toast.makeText(this, "No permission granted!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
-
-    public String hereLocation(double lat, double lon) {
-        String ourCity="";
-
-        Geocoder geocoder = new Geocoder(CreateJobActivity.this, Locale.getDefault());
-        List<Address> addressList;
-        try{
-            addressList=geocoder.getFromLocation(lat,lon,1);
-            if(addressList.size()>0) {
-                ourCity=addressList.get(0).getLocality();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ourCity;
-    }
-
     private void initUIElements() {
         titleEditText = (EditText) findViewById(R.id.title_edit_text);
         descriptionEditText = (EditText) findViewById(R.id.description_edit_text);
@@ -156,6 +140,7 @@ public class CreateJobActivity extends AppCompatActivity {
         hours = Integer.valueOf(hoursSpinner.getSelectedItem().toString());
         minutesSpinner = (Spinner) findViewById(R.id.minutesSpinner);
         minutes = Integer.valueOf(minutesSpinner.getSelectedItem().toString());
+        difficulty = ((RatingBar)findViewById(R.id.difficultyBar)).getRating();
 
     }
 
