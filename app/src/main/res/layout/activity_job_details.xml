@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/title" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_title_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/title"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/description" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_description_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/description"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/city" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_city_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/city"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_adddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/address" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_address_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/address"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_estimatedWorkTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/estimatedWorkTime" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_estimatedWorkTime_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/estimatedWorkTime"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_startDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/createdDate" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_startDate_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/createdDate"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_endDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/endDate" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_endDate_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/endDate"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/difficulty" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_difficulty_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/difficulty"/>
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_reward"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="@string/reward2" />
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_reward_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/reward2"/>
+
+
+
+
+
+</LinearLayout>

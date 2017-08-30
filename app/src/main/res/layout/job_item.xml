@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/JobListTitleTextStyle"
+        android:id="@+id/job_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:text="Job Name" />
+
+    <TextView
+        style="@style/JobListDescriptionTextStyle"
+        android:id="@+id/job_description"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Job Description"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/activity_general_margin"
+        android:layout_marginRight="@dimen/activity_general_margin"
+        android:background="@android:color/darker_gray"/>
+
+</LinearLayout>

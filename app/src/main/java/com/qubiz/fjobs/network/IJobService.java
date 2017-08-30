@@ -4,10 +4,12 @@ import com.qubiz.fjobs.data.Job;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 public interface IJobService {
@@ -16,6 +18,9 @@ public interface IJobService {
     Call<List<Job>> getAllJobs();
 
     @POST("jobs")
-    Call<String> postJob(@Body Job job);
+    Call<Job> postJob(@Body Job job);
+
+    @GET("jobs/{jobId}")
+    Call<Job> getJobId(@Path("jobId") String jobId);
 
 }

@@ -22,7 +22,8 @@
             <EditText
                 android:id="@+id/title_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -38,7 +39,8 @@
             <EditText
                 android:id="@+id/description_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -54,7 +56,8 @@
             <EditText
                 android:id="@+id/city_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +73,8 @@
             <EditText
                 android:id="@+id/address_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -80,14 +84,12 @@
             android:layout_height="wrap_content"
             android:text="@string/estimatedWorkTime"
             android:textColor="@color/colorPrimary"
-            android:textSize="15dp"
-
-            />
+            android:textSize="15dp" />
 
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="@dimen/activity_general_margin"
             android:layout_weight="2.48"
             android:orientation="horizontal"
@@ -97,32 +99,29 @@
 
             <Spinner
                 android:id="@+id/daysSpinner"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="10dp"
                 android:entries="@array/daysSpinnerItems"
-                android:prompt="@string/days"
                 android:spinnerMode="dialog" />
 
             //HoursSpinner
 
             <Spinner
                 android:id="@+id/hoursSpinner"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="10dp"
                 android:entries="@array/hoursSpinnerItems"
-                android:prompt="@string/hours"
                 android:spinnerMode="dialog" />
 
             //MinutesSpinner
 
             <Spinner
                 android:id="@+id/minutesSpinner"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:entries="@array/minutesSpinnerItems"
-                android:prompt="@string/minutes"
                 android:spinnerMode="dialog" />
 
         </LinearLayout>
@@ -130,58 +129,55 @@
         // Available from
 
         <EditText
+            android:id="@+id/startDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_general_margin"
-            android:hint="@string/createdDate"
-            android:id="@+id/createdDate"
             android:focusable="false"
-            />
+            android:hint="@string/createdDate" />
 
         // Expires On
 
         <EditText
+            android:id="@+id/endDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_general_margin"
-            android:hint="@string/endDate"
-            android:id="@+id/endDate"
             android:focusable="false"
-            />
+            android:hint="@string/endDate" />
 
         // Difficulty
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Difficulty"
-            android:textSize="15dp"
+            android:text="@string/difficulty"
             android:textColor="@color/colorPrimary"
-            />
+            android:textSize="15dp" />
 
         <RatingBar
             android:id="@+id/difficultyBar"
             android:layout_width="wrap_content"
-            android:layout_height="49dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
             android:numStars="5"
-            android:stepSize="0.5"
-            android:layout_marginBottom="@dimen/activity_general_margin"/>
+            android:stepSize="1" />
 
         //Reward
 
         <EditText
-            android:id="@+id/address_edit_text"
+            android:id="@+id/reward"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/reward"/>
+            android:hint="@string/reward" />
 
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_general_margin"
             android:layout_marginBottom="@dimen/activity_general_margin"
+            android:layout_marginTop="@dimen/activity_general_margin"
             android:text="@string/save" />
 
     </LinearLayout>

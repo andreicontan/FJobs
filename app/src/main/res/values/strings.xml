@@ -11,5 +11,7 @@
     <string name="createdDate">Available From</string>
     <string name="endDate">Expires On</string>
     <string name="reward">Enter a reward for job completion</string>
+    <string name="reward2">Reward</string>
     <string name="save">Save</string>
+    <string name="difficulty">Difficulty</string>
 </resources>

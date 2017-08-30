@@ -4,8 +4,14 @@ package com.qubiz.fjobs.data;
 import com.google.gson.annotations.SerializedName;
 import com.qubiz.fjobs.util.DataUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class Job {
-    private int id;
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
+
+    private String id;
     private String description;
     private String title;
     private String photo;
@@ -27,28 +33,12 @@ public class Job {
     private int difficulty;
 
     @SerializedName("reward")
-    private JobReward jobReward;
+    private String jobReward;
 
     public Job() {
-        this.id = DataUtils.nextValue();
     }
 
-    public Job(int id, String description, String title, String photo, String city, String address, int estimatedTime, String createdDate, String startDate, String endDate, int difficulty, JobReward jobReward) {
-        this.id = id;
-        this.description = description;
-        this.title = title;
-        this.photo = photo;
-        this.city = city;
-        this.address = address;
-        this.estimatedTime = estimatedTime;
-        this.createdDate = createdDate;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.difficulty = difficulty;
-        this.jobReward = jobReward;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -88,11 +78,11 @@ public class Job {
         return endDate;
     }
 
-    public int getDifficulty() {
+    public double getDifficulty() {
         return difficulty;
     }
 
-    public JobReward getJobReward() {
+    public String getJobReward() {
         return jobReward;
     }
 
@@ -120,10 +110,6 @@ public class Job {
         this.estimatedTime = estimatedTime;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
@@ -136,7 +122,7 @@ public class Job {
         this.difficulty = difficulty;
     }
 
-    public void setJobReward(JobReward jobReward) {
+    public void setJobReward(String jobReward) {
         this.jobReward = jobReward;
     }
 }

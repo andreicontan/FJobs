@@ -1,17 +1,11 @@
 package com.qubiz.fjobs.ui;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.icu.util.Calendar;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,18 +13,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
-import com.qubiz.fjobs.data.JobReward;
 import com.qubiz.fjobs.network.JobApiCalls;
 
-import java.util.List;
 import java.util.Locale;
-import java.util.jar.Manifest;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,6 +30,7 @@ import retrofit2.Response;
  * Created by cameliahotico on 7/6/17.
  */
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class CreateJobActivity extends AppCompatActivity {
 
     private EditText titleEditText;
@@ -52,23 +44,25 @@ public class CreateJobActivity extends AppCompatActivity {
     private Spinner minutesSpinner;
     private int minutes;
     private RatingBar difficultyBar;
-    private float difficulty;
-    public DatePickerDialog myDialog;
-    Calendar myCalendar = Calendar.getInstance();
-
-
-    //TODO declare all layout resources
+    private EditText startDateEditText;
+    private EditText endDateEditText;
+    private int difficulty;
+    private DatePickerDialog myDialog;
+    private EditText rewardEditText;
+    private Calendar myCalendar = Calendar.getInstance();
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job);
 
-        final EditText createdDateText = (EditText) findViewById(R.id.createdDate);
+        final EditText startDateText = (EditText) findViewById(R.id.startDate);
         final EditText endDateText = (EditText) findViewById(R.id.endDate);
 
-        createdDateText.setOnClickListener(new View.OnClickListener() {
+        startDateText.setOnClickListener(new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 myDialog = new DatePickerDialog(CreateJobActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
@@ -76,20 +70,21 @@ public class CreateJobActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear,
                                           int dayOfMonth) {
-                        String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
+                        String date = year + "-" + String.format(Locale.getDefault(), "%02d", (monthOfYear + 1)) + "-" + String.format(Locale.getDefault(), "%02d", dayOfMonth);
                         Toast toast = Toast.makeText(CreateJobActivity.this, date, Toast.LENGTH_SHORT);
                         toast.show();
-                        createdDateText.setText(date);
+                        startDateText.setText(date);
                     }
                 },  myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH));;
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
                 myDialog.show();
             }
         });
 
         endDateText.setOnClickListener(new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 myDialog = new DatePickerDialog(CreateJobActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
@@ -97,14 +92,14 @@ public class CreateJobActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear,
                                           int dayOfMonth) {
-                        String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
+                        String date = year + "-" + String.format(Locale.getDefault(), "%02d", (monthOfYear + 1)) + "-" + String.format(Locale.getDefault(), "%02d", dayOfMonth);
                         Toast toast = Toast.makeText(CreateJobActivity.this, date, Toast.LENGTH_SHORT);
                         toast.show();
                         endDateText.setText(date);
                     }
                 },  myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH));;
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
                 myDialog.show();
             }
         });
@@ -135,12 +130,17 @@ public class CreateJobActivity extends AppCompatActivity {
         cityEditText = (EditText) findViewById(R.id.city_edit_text);
         addressEditText = (EditText) findViewById(R.id.address_edit_text);
         daysSpinner = (Spinner) findViewById(R.id.daysSpinner);
-        days = Integer.valueOf(daysSpinner.getSelectedItem().toString());
+
         hoursSpinner = (Spinner) findViewById(R.id.hoursSpinner);
-        hours = Integer.valueOf(hoursSpinner.getSelectedItem().toString());
+
         minutesSpinner = (Spinner) findViewById(R.id.minutesSpinner);
-        minutes = Integer.valueOf(minutesSpinner.getSelectedItem().toString());
-        difficulty = ((RatingBar)findViewById(R.id.difficultyBar)).getRating();
+
+        ratingBar = ((RatingBar)findViewById(R.id.difficultyBar));
+        startDateEditText= (EditText) findViewById(R.id.startDate);
+        endDateEditText= (EditText) findViewById(R.id.endDate);
+        rewardEditText = (EditText) findViewById(R.id.reward);
+
+
 
     }
 
@@ -150,19 +150,40 @@ public class CreateJobActivity extends AppCompatActivity {
         job.setDescription(descriptionEditText.getText().toString());
         job.setCity(cityEditText.getText().toString());
         job.setAddress(addressEditText.getText().toString());
+        if (daysSpinner.getSelectedItem().toString().equals("Days")) {
+            days = 0;
+        } else {
+            days = Integer.valueOf(daysSpinner.getSelectedItem().toString());
+        }
+        if (hoursSpinner.getSelectedItem().toString().equals("Hours")) {
+            hours = 0;
+        } else {
+            hours = Integer.valueOf(hoursSpinner.getSelectedItem().toString());
+        }
+        if (minutesSpinner.getSelectedItem().toString().equals("Mins")) {
+            minutes = 0;
+        } else {
+            minutes = Integer.valueOf(minutesSpinner.getSelectedItem().toString());
+        }
         job.setEstimatedTime(days*1440+hours*60+minutes);
+        job.setStartDate(startDateEditText.getText().toString());
+        job.setEndDate(endDateEditText.getText().toString());
+        difficulty = ratingBar.getProgress();
+        job.setDifficulty(difficulty);
+        job.setJobReward(rewardEditText.getText().toString());
         postJob(job);
     }
 
     private void postJob(Job job) {
-        JobApiCalls.postNewJob(job, new Callback<String>() {
+        JobApiCalls.postNewJob(job, new Callback<Job>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(CreateJobActivity.this, response.body(), Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<Job> call, Response<Job> response) {
+                Toast.makeText(CreateJobActivity.this, "Succes", Toast.LENGTH_SHORT).show();
+                CreateJobActivity.this.finish();
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Job> call, Throwable t) {
                 t.printStackTrace();
                 Toast.makeText(CreateJobActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }

@@ -8,6 +8,7 @@ import com.qubiz.fjobs.data.Job;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -15,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class JobApiCalls {
-    private static final String BASE_URL = "https://virtserver.swaggerhub.com/FJobs/Start_App/1.0.0/";
+    private static final String BASE_URL = "https://quiet-river-94387.herokuapp.com/";
     private static Retrofit retrofit;
     private static IJobService jobService;
     private static OkHttpClient okHttpClient;
@@ -59,7 +60,11 @@ public class JobApiCalls {
         getJobService().getAllJobs().enqueue(requestCallback);
     }
 
-    public static void postNewJob(Job job, Callback<String> requestCallback) {
+    public static void postNewJob(Job job, Callback<Job> requestCallback) {
         getJobService().postJob(job).enqueue(requestCallback);
+    }
+
+    public static void getJobByID(String jobId, Callback<Job> requestCallback){
+        getJobService().getJobId(jobId).enqueue(requestCallback);
     }
 }
