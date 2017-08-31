@@ -5,6 +5,4 @@ package com.qubiz.fjobs.ui;
  */
 
 public class JobDetailsActivity {
-
-
 }

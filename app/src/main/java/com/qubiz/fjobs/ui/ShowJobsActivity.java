@@ -1,10 +1,14 @@
 package com.qubiz.fjobs.ui;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
@@ -28,12 +32,20 @@ public class ShowJobsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_jobs);
+        setTitle(R.string.job_list_title);
         jobListView = (RecyclerView) findViewById(R.id.jobsRV);
-
+        FloatingActionButton createJobButton = (FloatingActionButton) findViewById(R.id.create_job_button);
+        createJobButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startJobActivityIntent = new Intent(ShowJobsActivity.this, CreateJobActivity.class);
+                startActivity(startJobActivityIntent);
+            }
+        });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         jobListView.setLayoutManager(linearLayoutManager);
-        mAdapter= new MyAdapter(jobList);
+        mAdapter= new MyAdapter(this, jobList);
         jobListView.setAdapter(mAdapter);
         getAllJobs();
 

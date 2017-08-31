@@ -14,4 +14,12 @@
     <string name="reward2">Reward</string>
     <string name="save">Save</string>
     <string name="difficulty">Difficulty</string>
+
+    <string name="job_list_difficulty">Difficulty: %s</string>
+    <string name="job_list_reward">Reward: %s</string>
+    <string name="job_list_est_work_time">Estimated work time: %d hours</string>
+    <string name="job_list_dismiss">DISMISS</string>
+    <string name="job_list_apply">APPLY</string>
+    <string name="job_list_title">Available Jobs</string>
+    <string name="create_job_title">Create Job</string>
 </resources>

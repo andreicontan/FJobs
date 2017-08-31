@@ -10,6 +10,11 @@ import java.util.Locale;
 public class Job {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
+    private static final String VERY_LOW_DIFFICULTY = "VERY EASY";
+    private static final String LOW_DIFFICULTY = "EASY";
+    private static final String MEDIUM_DIFFICULTY = "CHALLENGING";
+    private static final String TOUGH_DIFFICULTY = "TOUGH";
+    private static final String HARD_CORE_DIFFICULTY = "HARD-CORE";
 
     private String id;
     private String description;
@@ -78,8 +83,21 @@ public class Job {
         return endDate;
     }
 
-    public double getDifficulty() {
-        return difficulty;
+    public String getDifficulty() {
+        switch (difficulty) {
+            default:
+            case 0:
+            case 1:
+                return VERY_LOW_DIFFICULTY;
+            case 2:
+                return LOW_DIFFICULTY;
+            case 3:
+                return MEDIUM_DIFFICULTY;
+            case 4:
+                return TOUGH_DIFFICULTY;
+            case 5:
+                return HARD_CORE_DIFFICULTY;
+        }
     }
 
     public String getJobReward() {

@@ -1,14 +1,17 @@
 package com.qubiz.fjobs.ui;
 
-import android.content.Intent;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
+import com.qubiz.fjobs.util.ImageLoader;
 
 import java.util.List;
 
@@ -18,8 +21,10 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Job> jobs;
+    private Context context;
 
-    public MyAdapter(List<Job> jobList) {
+    public MyAdapter(Context context, List<Job> jobList) {
+        this.context = context;
         jobs = jobList;
     }
 
@@ -31,10 +36,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Job job = jobs.get(position);
-        holder.mTitleView.setText(job.getTitle());
-        holder.mDescriptionView.setText(job.getDescription());
+        ImageLoader.loadImage(context, job.getPhoto(), holder.jobImageView);
+        holder.jobTitleView.setText(job.getTitle());
+        holder.jobDescriptionView.setText(job.getDescription());
+        holder.jobEstimatedWorkTimeView.setText(context.getString(R.string.job_list_est_work_time, job.getEstimatedTime()));
+        holder.jobRewardView.setText(context.getString(R.string.job_list_reward, job.getJobReward()));
+        holder.jobDifficultyView.setText(context.getString(R.string.job_list_difficulty, job.getDifficulty()));
+        holder.jobDismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jobs.remove(position);
+                notifyItemRemoved(position);
+            }
+        });
+        holder.jobApplyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Applied!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -44,17 +66,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView mTitleView;
-        private TextView mDescriptionView;
-
+        private ImageView jobImageView;
+        private TextView jobTitleView;
+        private TextView jobDescriptionView;
+        private TextView jobEstimatedWorkTimeView;
+        private TextView jobRewardView;
+        private TextView jobDifficultyView;
+        private TextView jobDismissButton;
+        private TextView jobApplyButton;
 
         private ViewHolder(View v) {
             super(v);
-            mTitleView = v.findViewById(R.id.job_title);
-            mDescriptionView = v.findViewById(R.id.job_description);
-
-            
-
+            jobImageView = v.findViewById(R.id.job_image_view);
+            jobTitleView = v.findViewById(R.id.job_title);
+            jobDescriptionView = v.findViewById(R.id.job_description);
+            jobEstimatedWorkTimeView = v.findViewById(R.id.job_estimated_work_time);
+            jobRewardView = v.findViewById(R.id.job_reward);
+            jobDifficultyView = v.findViewById(R.id.job_difficulty);
+            jobDismissButton = v.findViewById(R.id.dismiss_button);
+            jobApplyButton = v.findViewById(R.id.apply_button);
         }
     }
 }
