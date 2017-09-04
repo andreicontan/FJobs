@@ -42,13 +42,13 @@
             android:layout_margin="12dp"
             android:orientation="vertical">
 
-`       <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:text="@string/contact_details"
-            android:gravity="center_horizontal"
-            style="@style/StudentSubtitleTextStyle"/>
+           <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/contact_details"
+                android:gravity="center_horizontal"
+                style="@style/StudentSubtitleTextStyle"/>
 
             <TextView
                 android:layout_width="match_parent"
