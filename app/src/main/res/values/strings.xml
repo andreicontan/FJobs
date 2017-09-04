@@ -15,6 +15,24 @@
     <string name="save">Save</string>
     <string name="difficulty">Difficulty</string>
 
+    <string name="contact_details">Contact Details</string>
+    <string name="student_phone">Phone: %s</string>
+    <string name="student_email">Email: %s</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="student_city">City: %s</string>
+    <string name="student_age">Age: %d</string>
+    <string name="student_skills">Skills: %s</string>
+    <string name="student_gender">Gender: %s</string>
+    <string name="appliedjobs_button">Applied Jobs</string>
+    <string name="student_name">Student Name</string>
+
+    <string name="employer_name">Employer Name</string>
+    <string name="employer_city">City: %s</string>
+    <string name="employer_age">Age: %d</string>
+    <string name="employer_gender">Gender: %s</string>
+    <string name="employer_phone">Phone: %s</string>
+    <string name="employer_email">Email: %s</string>
+
     <string name="job_list_difficulty">Difficulty: %s</string>
     <string name="job_list_reward">Reward: %s</string>
     <string name="job_list_est_work_time">Estimated work time: %d hours</string>

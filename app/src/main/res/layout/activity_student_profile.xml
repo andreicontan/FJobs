@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <ImageView
+                android:id="@+id/student_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/job_image_placeholder" />
+
+            <TextView
+                android:id="@+id/student_name"
+                style="@style/JobListTitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/semitransparent_black"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_general_margin"
+                android:text="@string/student_name" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="12dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/contact_details"
+                android:gravity="center_horizontal"
+                style="@style/StudentSubtitleTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_phone"
+                android:text="@string/student_phone"
+                android:layout_margin="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/JobListDescriptionTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_email"
+                android:text="@string/student_email"
+                android:layout_margin="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/JobListDescriptionTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/personal_details"
+                android:gravity="center_horizontal"
+                style="@style/StudentSubtitleTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_city"
+                android:text="@string/student_city"
+                android:layout_margin="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/JobListDescriptionTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_age"
+                android:text="@string/student_age"
+                android:layout_margin="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/JobListDescriptionTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_gender"
+                android:text="@string/student_gender"
+                android:layout_margin="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/JobListDescriptionTextStyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_skills"
+                android:text="@string/student_skills"
+                android:layout_margin="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/JobListDescriptionTextStyle"/>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/myjobs_button"
+            style="@style/JobListTitleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
+            android:layout_marginTop="@dimen/activity_general_margin_20dp"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/activity_general_margin"
+            android:text="@string/appliedjobs_button"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</ScrollView>
