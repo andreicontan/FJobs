@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.CreateJobActivity" />
+        <activity android:name=".ui.JobDetailsActivity" />
+        <activity android:name=".ui.EmployerProfileActivity" />
     </application>
 
 </manifest>

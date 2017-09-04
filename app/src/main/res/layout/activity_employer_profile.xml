@@ -24,7 +24,7 @@
                 android:src="@drawable/job_image_placeholder" />
 
             <TextView
-                android:id="@+id/smployer_name"
+                android:id="@+id/employer_name"
                 style="@style/JobListTitleTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,17 +88,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/employer_age"
-                android:text="@string/employer_age"
-                android:layout_margin="3dp"
-                android:layout_marginTop="5dp"
-                style="@style/JobListDescriptionTextStyle"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/employer_gender"
-                android:text="@string/employer_gender"
+                android:id="@+id/employer_address"
+                android:text="@string/employer_address"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>

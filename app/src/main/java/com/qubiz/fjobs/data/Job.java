@@ -23,6 +23,9 @@ public class Job {
     private String city;
     private String address;
 
+    @SerializedName("employerID")
+    private String employerId;
+
     @SerializedName("estimated_time")
     private int estimatedTime;
 
@@ -103,6 +106,8 @@ public class Job {
     public String getJobReward() {
         return jobReward;
     }
+
+    public String getEmployerId() { return employerId; }
 
     public void setDescription(String description) {
         this.description = description;

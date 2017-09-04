@@ -1,8 +1,10 @@
 package com.qubiz.fjobs.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,7 +36,6 @@ public class JobDetailsActivity extends AppCompatActivity{
     private TextView Reward;
     private ImageView JobImage;
     private Button Apply;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +82,16 @@ public class JobDetailsActivity extends AppCompatActivity{
         Difficulty.setText(String.valueOf(job.getDifficulty()));
         Reward.setText(job.getJobReward());
         ImageLoader.loadImage(this,job.getPhoto(), JobImage);
+
+        Button EmployerProfileButton = (Button) findViewById(R.id.employer_profile_button);
+        EmployerProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(JobDetailsActivity.this, EmployerProfileActivity.class);
+                myIntent.putExtra("ID",job.getEmployerId());
+                startActivity(myIntent);
+            }
+        });
 
 
 
