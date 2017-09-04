@@ -33,4 +33,14 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="JobListTitleTextStyle2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+    </style>
+
+    <style name="JobListDescriptionTextStyle2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
 </resources>

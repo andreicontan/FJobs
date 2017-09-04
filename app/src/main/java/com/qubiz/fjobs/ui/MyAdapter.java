@@ -1,6 +1,7 @@
 package com.qubiz.fjobs.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Job job = jobs.get(position);
+        final Job job = jobs.get(position);
         ImageLoader.loadImage(context, job.getPhoto(), holder.jobImageView);
         holder.jobTitleView.setText(job.getTitle());
         holder.jobDescriptionView.setText(job.getDescription());
@@ -55,6 +56,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Applied!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(context, JobDetailsActivity.class);
+                myIntent.putExtra("ID",job.getId());
+                context.startActivity(myIntent);
             }
         });
 

@@ -1,45 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/activity_general_margin">
 
-    <TextView
-        style="@style/JobListDescriptionTextStyle"
-        android:id="@+id/job_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_general_margin"
         android:layout_marginRight="@dimen/activity_general_margin"
-        android:text="@string/title" />
+        android:layout_marginTop="@dimen/activity_general_margin"
+        android:orientation="vertical">
 
-    <TextView
-        style="@style/JobListTitleTextStyle"
-        android:id="@+id/job_title_description"
-        android:layout_marginRight="@dimen/activity_general_margin"
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="@string/title"/>
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_general_margin_half"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="@dimen/activity_general_margin_half">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp">
+
+            <ImageView
+                android:id="@+id/job_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/job_image_placeholder" />
+
+            <TextView
+                android:id="@+id/job_title_description"
+                style="@style/JobListTitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/semitransparent_black"
+                android:gravity="center_vertical"
+                android:padding="@dimen/activity_general_margin"
+                android:text="Job Title" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_general_margin"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:text="@string/description" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_description_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/description"/>
+        />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,16 +73,16 @@
         android:text="@string/city" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_city_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/city"/>
+        />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_adddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,16 +90,16 @@
         android:text="@string/address" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_address_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/address"/>
+        />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_estimatedWorkTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,16 +107,16 @@
         android:text="@string/estimatedWorkTime" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_estimatedWorkTime_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/estimatedWorkTime"/>
+        />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,16 +124,16 @@
         android:text="@string/createdDate" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_startDate_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/createdDate"/>
+        />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,16 +141,16 @@
         android:text="@string/endDate" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_endDate_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/endDate"/>
+        />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_difficulty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,33 +158,58 @@
         android:text="@string/difficulty" />
 
     <TextView
-        style="@style/JobListTitleTextStyle"
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_difficulty_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/difficulty"/>
+       />
 
     <TextView
-        style="@style/JobListDescriptionTextStyle"
+        style="@style/JobListDescriptionTextStyle2"
         android:id="@+id/job_reward"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:text="@string/reward2" />
 
-    <TextView
-        style="@style/JobListTitleTextStyle"
+        <TextView
+        style="@style/JobListTitleTextStyle2"
         android:id="@+id/job_reward_description"
         android:layout_marginRight="@dimen/activity_general_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="@string/reward2"/>
+        android:layout_marginBottom="12dp"
+        />
+
+        <Button
+            android:id="@+id/apply_button"
+            style="@style/JobListTitleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/activity_general_margin"
+            android:text="@string/apply"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/employer_profile_button"
+            style="@style/JobListTitleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/activity_general_margin"
+            android:text="@string/employer"
+            android:textSize="18sp" />
+
 
 
 
 
 
 </LinearLayout>
+
+</ScrollView>
