@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
@@ -35,14 +36,17 @@ public class JobDetailsActivity extends AppCompatActivity{
     private TextView Difficulty;
     private TextView Reward;
     private ImageView JobImage;
-    private Button Apply;
+    private Button EmployerProfileButton;
+    private Button ApplyButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_details);
         String id=getIntent().getExtras().getString("ID");
+        initUIElements();
         getJob(id);
+        Apply(id,"599d856077c8bf4f714139f8");
     }
 
     private void getJob(String id) {
@@ -50,7 +54,7 @@ public class JobDetailsActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<Job> call, Response<Job> response) {
                 job=response.body();
-                initUIElements();
+                setValues();
             }
 
             @Override
@@ -58,6 +62,27 @@ public class JobDetailsActivity extends AppCompatActivity{
 
             }
         });
+    }
+
+    private void Apply(final String jobId,final String studentId) {
+        ApplyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JobApiCalls.addStudentToJob(jobId, studentId, new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Toast.makeText(JobDetailsActivity.this, "Applied!!!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+
+                    }
+                });
+            }
+        }
+
+        );
     }
 
     private void initUIElements() {
@@ -71,7 +96,11 @@ public class JobDetailsActivity extends AppCompatActivity{
         Difficulty=(TextView) findViewById(R.id.job_difficulty_description);
         Reward=(TextView) findViewById(R.id.job_reward_description);
         JobImage=(ImageView) findViewById(R.id.job_image_view);
+        EmployerProfileButton = (Button) findViewById(R.id.employer_profile_button);
+        ApplyButton = (Button) findViewById(R.id.employer_apply_button);
+    }
 
+    private void setValues() {
         Title.setText(job.getTitle());
         Description.setText(job.getDescription());
         City.setText(job.getCity());
@@ -83,7 +112,7 @@ public class JobDetailsActivity extends AppCompatActivity{
         Reward.setText(job.getJobReward());
         ImageLoader.loadImage(this,job.getPhoto(), JobImage);
 
-        Button EmployerProfileButton = (Button) findViewById(R.id.employer_profile_button);
+
         EmployerProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,9 +121,6 @@ public class JobDetailsActivity extends AppCompatActivity{
                 startActivity(myIntent);
             }
         });
-
-
-
     }
 
 }

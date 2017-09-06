@@ -6,15 +6,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
+import com.qubiz.fjobs.network.JobApiCalls;
 import com.qubiz.fjobs.util.ImageLoader;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Andreea's on 8/23/2017.
@@ -49,15 +55,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 jobs.remove(position);
-                notifyItemRemoved(position);
+                notifyDataSetChanged();
             }
         });
-        holder.jobApplyButton.setOnClickListener(new View.OnClickListener() {
+        /*holder.jobApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Applied!!!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
+        holder.ApplyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JobApiCalls.addStudentToJob(job.getId(), "599d856077c8bf4f714139f8", new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Toast.makeText(context, "Applied!!!", Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                    }
+                });
+            }
+        }
+        );
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +103,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private TextView jobRewardView;
         private TextView jobDifficultyView;
         private TextView jobDismissButton;
-        private TextView jobApplyButton;
+        private TextView ApplyButton;
 
         private ViewHolder(View v) {
             super(v);
@@ -93,9 +114,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             jobRewardView = v.findViewById(R.id.job_reward);
             jobDifficultyView = v.findViewById(R.id.job_difficulty);
             jobDismissButton = v.findViewById(R.id.dismiss_button);
-            jobApplyButton = v.findViewById(R.id.apply_button);
+            ApplyButton = v.findViewById(R.id.apply_button);
         }
     }
+
 }
 
 

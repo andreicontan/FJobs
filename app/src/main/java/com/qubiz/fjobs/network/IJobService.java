@@ -25,6 +25,6 @@ public interface IJobService {
     Call<Job> getJobId(@Path("jobId") String jobId);
 
     @PATCH("jobs/{jobId}/students")
-    Call<Job> addStudentToJob(@Path("jobId") String jobId, @Body("studentId") String studentId);
+    Call<String> addStudentToJob(@Path("jobId") String jobId, @Body String studentId);
 
 }
