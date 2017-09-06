@@ -62,7 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/employer_phone"
-                android:text="@string/employer_phone"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -79,7 +78,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/employer_email"
-                android:text="@string/employer_email"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -104,7 +102,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/employer_city"
-                android:text="@string/employer_city"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -121,7 +118,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/employer_address"
-                android:text="@string/employer_address"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>

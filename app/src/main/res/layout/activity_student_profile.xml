@@ -62,7 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/student_phone"
-                android:text="@string/student_phone"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -79,7 +78,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/student_email"
-                android:text="@string/student_email"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -104,7 +102,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/student_city"
-                android:text="@string/student_city"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -121,7 +118,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/student_age"
-                android:text="@string/student_age"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -138,7 +134,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/student_gender"
-                android:text="@string/student_gender"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
@@ -155,7 +150,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/student_skills"
-                android:text="@string/student_skills"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
                 style="@style/JobListDescriptionTextStyle"/>
