@@ -206,13 +206,11 @@ public class CreateJobActivity extends AppCompatActivity {
     }
 
     private void populateDifficultyMap() {
-        for (int i = 1; i < 6; i++) {
-            if (i == 1) {
-                difficultyMap.put("1 hour", 1);
-            } else {
-                difficultyMap.put(i + " hours", i);
-            }
-        }
+        difficultyMap.put(Job.VERY_LOW_DIFFICULTY, 1);
+        difficultyMap.put(Job.LOW_DIFFICULTY, 2);
+        difficultyMap.put(Job.MEDIUM_DIFFICULTY, 3);
+        difficultyMap.put(Job.TOUGH_DIFFICULTY, 4);
+        difficultyMap.put(Job.HARD_CORE_DIFFICULTY, 5);
     }
 
 }
