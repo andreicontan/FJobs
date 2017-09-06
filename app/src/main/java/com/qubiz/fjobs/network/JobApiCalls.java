@@ -66,4 +66,8 @@ public class JobApiCalls {
     public static void getJobByID(String jobId, Callback<Job> requestCallback){
         getJobService().getJobId(jobId).enqueue(requestCallback);
     }
+
+    //public static void
+
+
 }

@@ -43,6 +43,12 @@ public class Student {
     @SerializedName("earned_skills")
     private String earnedSkills;
 
+    public String getGender() {
+        return gender;
+    }
+
+    private String gender;
+
 
     public String getId() {
         return id;

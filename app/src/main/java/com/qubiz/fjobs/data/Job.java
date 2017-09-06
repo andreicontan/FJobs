@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.qubiz.fjobs.util.DataUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 public class Job {
@@ -42,6 +43,12 @@ public class Job {
 
     @SerializedName("reward")
     private String jobReward;
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    private List<Student> students;
 
     public Job() {
     }
