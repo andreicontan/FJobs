@@ -11,11 +11,11 @@ import java.util.Locale;
 public class Job {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
-    private static final String VERY_LOW_DIFFICULTY = "VERY EASY";
-    private static final String LOW_DIFFICULTY = "EASY";
-    private static final String MEDIUM_DIFFICULTY = "CHALLENGING";
-    private static final String TOUGH_DIFFICULTY = "TOUGH";
-    private static final String HARD_CORE_DIFFICULTY = "HARD-CORE";
+    public static final String VERY_LOW_DIFFICULTY = "Very easy";
+    public static final String LOW_DIFFICULTY = "Easy";
+    public static final String MEDIUM_DIFFICULTY = "Challenging";
+    public static final String TOUGH_DIFFICULTY = "Tough";
+    public static final String HARD_CORE_DIFFICULTY = "Hard-Core";
 
     private String id;
     private String description;
