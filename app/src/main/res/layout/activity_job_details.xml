@@ -204,6 +204,16 @@
             android:padding="@dimen/activity_general_margin"
             android:text="@string/employer"
             android:textSize="18sp" />
+        <Button
+            android:id="@+id/student_list_button"
+            style="@style/JobListTitleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_general_margin"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/activity_general_margin"
+            android:text="@string/studentList"
+            android:textSize="18sp" />
 
 
 

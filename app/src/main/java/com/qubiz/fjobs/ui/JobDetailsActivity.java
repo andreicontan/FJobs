@@ -38,6 +38,7 @@ public class JobDetailsActivity extends AppCompatActivity{
     private ImageView JobImage;
     private Button EmployerProfileButton;
     private Button ApplyButton;
+    private Button StudentListButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class JobDetailsActivity extends AppCompatActivity{
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-
+                        Toast.makeText(JobDetailsActivity.this, "Fail to apply!!!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -98,6 +99,7 @@ public class JobDetailsActivity extends AppCompatActivity{
         JobImage=(ImageView) findViewById(R.id.job_image_view);
         EmployerProfileButton = (Button) findViewById(R.id.employer_profile_button);
         ApplyButton = (Button) findViewById(R.id.employer_apply_button);
+        StudentListButton = (Button) findViewById(R.id.student_list_button);
     }
 
     private void setValues() {
@@ -118,6 +120,15 @@ public class JobDetailsActivity extends AppCompatActivity{
             public void onClick(View view) {
                 Intent myIntent = new Intent(JobDetailsActivity.this, EmployerProfileActivity.class);
                 myIntent.putExtra("ID",job.getEmployerId());
+                startActivity(myIntent);
+            }
+        });
+
+        StudentListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(JobDetailsActivity.this, AplicantsActivity.class);
+                myIntent.putExtra("ID",job.getId());
                 startActivity(myIntent);
             }
         });

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FJobs</string>
+    <string name="app_name">fJobs</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="city">City</string>
@@ -16,6 +16,7 @@
     <string name="difficulty">Difficulty</string>
     <string name="apply">Apply</string>
     <string name="employer">Employer Profile</string>
+    <string name="studentList">List of Aplicants</string>
 
     <string name="contact_details">Contact Details</string>
     <string name="student_phone">Phone</string>
@@ -42,4 +43,5 @@
     <string name="job_list_apply">APPLY</string>
     <string name="job_list_title">Available Jobs</string>
     <string name="create_job_title">Create Job</string>
+    <string name="list_of_applicans_title">Applicants</string>
 </resources>

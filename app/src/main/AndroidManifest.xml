@@ -22,6 +22,7 @@
         <activity android:name=".ui.CreateJobActivity" />
         <activity android:name=".ui.JobDetailsActivity" />
         <activity android:name=".ui.EmployerProfileActivity" />
+        <activity android:name=".ui.AplicantsActivity" />
     </application>
 
 </manifest>
