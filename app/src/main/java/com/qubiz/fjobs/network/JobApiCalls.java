@@ -3,7 +3,6 @@ package com.qubiz.fjobs.network;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
 import com.qubiz.fjobs.BuildConfig;
-import com.qubiz.fjobs.data.ApplyJobRequestBody;
 import com.qubiz.fjobs.data.Job;
 
 import java.util.List;
@@ -68,8 +67,8 @@ public class JobApiCalls {
         getJobService().getJobId(jobId).enqueue(requestCallback);
     }
 
-    public static void addStudentToJob(String jobId, String studentId, Callback<String> requestCallback) {
-        getJobService().addStudentToJob(jobId, new ApplyJobRequestBody(studentId)).enqueue(requestCallback);
+    public static void addStudentToJob(String jobId, String studentId, Callback<Job> requestCallback) {
+        getJobService().addStudentToJob(jobId, studentId).enqueue(requestCallback);
     }
 
 

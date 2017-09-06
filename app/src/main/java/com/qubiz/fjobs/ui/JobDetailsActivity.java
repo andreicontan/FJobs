@@ -47,7 +47,7 @@ public class JobDetailsActivity extends AppCompatActivity{
         String id=getIntent().getExtras().getString("ID");
         initUIElements();
         getJob(id);
-        Apply(id,"599d856077c8bf4f714139f8");
+        Apply(id,"59a534e7e4b01e9cf162556f");
     }
 
     private void getJob(String id) {
@@ -69,14 +69,14 @@ public class JobDetailsActivity extends AppCompatActivity{
         ApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JobApiCalls.addStudentToJob(jobId, studentId, new Callback<String>() {
+                JobApiCalls.addStudentToJob(jobId, studentId, new Callback<Job>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(Call<Job> call, Response<Job> response) {
                         Toast.makeText(JobDetailsActivity.this, "Applied!!!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<Job> call, Throwable t) {
                         Toast.makeText(JobDetailsActivity.this, "Fail to apply!!!", Toast.LENGTH_SHORT).show();
                     }
                 });
