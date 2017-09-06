@@ -29,6 +29,10 @@
     <string name="appliedjobs_button">Applied Jobs</string>
     <string name="student_name">Student Name</string>
 
+    <string name="student_item_age">Age: %d</string>
+    <string name="student_item_city">City: %d</string>
+    <string name="student_item_gender">Gender: %s</string>
+
     <string name="employer_name">Employer Name</string>
     <string name="employer_city">City</string>
     <string name="employer_address">Address</string>

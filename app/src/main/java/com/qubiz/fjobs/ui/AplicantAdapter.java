@@ -29,7 +29,7 @@ public class AplicantAdapter extends RecyclerView.Adapter<AplicantAdapter.ViewHo
 
     @Override
     public AplicantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_student_profile, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_item, parent, false);
         AplicantAdapter.ViewHolder vh = new AplicantAdapter.ViewHolder(v);
         return vh;
     }
@@ -39,11 +39,9 @@ public class AplicantAdapter extends RecyclerView.Adapter<AplicantAdapter.ViewHo
         final Student student = students.get(position);
         ImageLoader.loadImage(context, student.getPhoto(), holder.studentImageView);
         holder.studentName.setText(student.getFname() + " " + student.getLname());
-        holder.studentPhone.setText(student.getPhone());
-        holder.studentEmail.setText(student.getEmail());
+        holder.studentGender.setText(context.getString(R.string.student_item_gender, student.getGender()));
         holder.studentCity.setText(student.getCity());
-        holder.studentAge.setText(context.getString(R.string.student_age, student.getAge()));
-        holder.studentSkills.setText(student.getEarnedSkills());
+        holder.studentAge.setText(context.getString(R.string.student_item_age, student.getAge()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,22 +62,18 @@ public class AplicantAdapter extends RecyclerView.Adapter<AplicantAdapter.ViewHo
 
         private ImageView studentImageView;
         private TextView studentName;
-        private TextView studentPhone;
-        private TextView studentEmail;
+        private TextView studentGender;
         private TextView studentCity;
         private TextView studentAge;
-        private TextView studentSkills;
 
 
         private ViewHolder(View v) {
             super(v);
-            studentImageView = v.findViewById(R.id.student_image_view);
-            studentName = v.findViewById(R.id.student_name);
-            studentPhone=v.findViewById(R.id.student_phone);
-            studentEmail=v.findViewById(R.id.student_email);
-            studentCity=v.findViewById(R.id.student_city);
-            studentAge=v.findViewById(R.id.student_age);
-            studentSkills=v.findViewById(R.id.student_skills);
+            studentImageView = v.findViewById(R.id.student_item_image_view);
+            studentName = v.findViewById(R.id.student_item_title);
+            studentGender=v.findViewById(R.id.student_item_gender);
+            studentCity=v.findViewById(R.id.student_item_city);
+            studentAge=v.findViewById(R.id.student_item_age);
         }
     }
 }

@@ -152,24 +152,11 @@
                 android:id="@+id/student_skills"
                 android:layout_margin="3dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="@dimen/activity_general_margin"
                 style="@style/JobListDescriptionTextStyle"/>
 
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/myjobs_button"
-            style="@style/JobListTitleTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_general_margin"
-            android:layout_marginTop="@dimen/activity_general_margin_20dp"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/activity_general_margin"
-            android:text="@string/appliedjobs_button"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textSize="18sp" />
 
     </LinearLayout>
 

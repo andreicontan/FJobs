@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_general_margin_half"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="@dimen/activity_general_margin_half">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp">
+
+                <ImageView
+                    android:id="@+id/student_item_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/job_image_placeholder" />
+
+                <TextView
+                    android:id="@+id/student_item_title"
+                    style="@style/JobListTitleTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/semitransparent_black"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/activity_general_margin"
+                    android:text="Student Name" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_general_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/student_item_city"
+                    style="@style/JobListDetailsTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="City: Cluj" />
+
+                <TextView
+                    android:id="@+id/student_item_age"
+                    style="@style/JobListDetailsTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Age: 100" />
+
+
+                <TextView
+                    android:id="@+id/student_item_gender"
+                    style="@style/JobListDetailsTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gender: M" />
+            </LinearLayout>
+
+            </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

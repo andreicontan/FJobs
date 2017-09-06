@@ -36,7 +36,6 @@ public class EmployerProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employer_profile);
         String id=getIntent().getExtras().getString("ID");
-        initUIElements();
         getEmployer(id);
     }
 
@@ -45,7 +44,7 @@ public class EmployerProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Employer> call, Response<Employer> response) {
                 employer=response.body();
-                setValues();
+                initUIElements();
             }
 
             @Override
@@ -62,9 +61,7 @@ public class EmployerProfileActivity extends AppCompatActivity {
         City=(TextView) findViewById(R.id.employer_city);
         Address=(TextView) findViewById(R.id.employer_address);
         Image=(ImageView) findViewById(R.id.employer_image_view);
-    }
 
-    private void setValues() {
         Name.setText(employer.getFname()+" "+employer.getLname());
         Phone.setText(employer.getPhone());
         Email.setText(employer.getEmail());

@@ -23,6 +23,7 @@
         <activity android:name=".ui.JobDetailsActivity" />
         <activity android:name=".ui.EmployerProfileActivity" />
         <activity android:name=".ui.AplicantsActivity" />
+        <activity android:name=".ui.StudentProfileActivity" />
     </application>
 
 </manifest>

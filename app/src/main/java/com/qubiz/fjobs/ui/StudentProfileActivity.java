@@ -38,7 +38,6 @@ public class StudentProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
         String id=getIntent().getExtras().getString("ID");
-        initUIElements();
         getStudent(id);
     }
 
@@ -47,7 +46,7 @@ public class StudentProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Student> call, Response<Student> response) {
                 student=response.body();
-                setValues();
+                initUIElements();
             }
 
             @Override
@@ -66,14 +65,12 @@ public class StudentProfileActivity extends AppCompatActivity {
         Gender=(TextView) findViewById(R.id.student_gender);
         Skills=(TextView) findViewById(R.id.student_skills);
         Image=(ImageView) findViewById(R.id.student_image_view);
-    }
 
-    private void setValues() {
         Name.setText(student.getFname()+" "+student.getLname());
         Phone.setText(student.getPhone());
         Email.setText(student.getEmail());
         City.setText(student.getCity());
-        Age.setText(student.getAge());
+        Age.setText(String.valueOf(student.getAge()));
         Gender.setText(student.getGender());
         Skills.setText(student.getEarnedSkills());
         ImageLoader.loadImage(this,student.getPhoto(), Image);
