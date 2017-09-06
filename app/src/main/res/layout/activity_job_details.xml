@@ -24,7 +24,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="170dp">
+            android:layout_height="250dp">
 
             <ImageView
                 android:id="@+id/job_image_view"
