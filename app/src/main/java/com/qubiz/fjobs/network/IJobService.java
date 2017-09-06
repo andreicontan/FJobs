@@ -1,5 +1,6 @@
 package com.qubiz.fjobs.network;
 
+import com.qubiz.fjobs.data.ApplyJobRequestBody;
 import com.qubiz.fjobs.data.Job;
 import com.qubiz.fjobs.data.Student;
 
@@ -25,6 +26,6 @@ public interface IJobService {
     Call<Job> getJobId(@Path("jobId") String jobId);
 
     @PATCH("jobs/{jobId}/students")
-    Call<String> addStudentToJob(@Path("jobId") String jobId, @Body String studentId);
+    Call<String> addStudentToJob(@Path("jobId") String jobId, @Body ApplyJobRequestBody studentIdBody);
 
 }
