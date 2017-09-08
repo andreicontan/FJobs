@@ -12,6 +12,11 @@ import android.widget.Toast;
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
 import com.qubiz.fjobs.network.JobApiCalls;
+import com.qubiz.fjobs.util.RefreshContentEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,7 @@ public class ShowJobsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         setContentView(R.layout.activity_show_jobs);
         setTitle(R.string.job_list_title);
         jobListView = (RecyclerView) findViewById(R.id.jobsRV);
@@ -49,12 +55,26 @@ public class ShowJobsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(RefreshContentEvent event) {
+        getAllJobs();
+    }
+
 
     public void getAllJobs() {
         JobApiCalls.getAllJobs(new Callback<List<Job>>() {
             @Override
             public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
                 if (response.body() != null) {
+                    if(jobList != null && !jobList.isEmpty()) {
+                        jobList.clear();
+                    }
                     jobList.addAll(response.body());
                     mAdapter.notifyDataSetChanged();
                 }

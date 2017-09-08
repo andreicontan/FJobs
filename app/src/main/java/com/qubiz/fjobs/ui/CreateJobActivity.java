@@ -1,6 +1,8 @@
 package com.qubiz.fjobs.ui;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Fragment;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +21,9 @@ import android.widget.Toast;
 import com.qubiz.fjobs.R;
 import com.qubiz.fjobs.data.Job;
 import com.qubiz.fjobs.network.JobApiCalls;
+import com.qubiz.fjobs.util.RefreshContentEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -173,6 +178,7 @@ public class CreateJobActivity extends AppCompatActivity {
         JobApiCalls.postNewJob(job, new Callback<Job>() {
             @Override
             public void onResponse(Call<Job> call, Response<Job> response) {
+                EventBus.getDefault().post(new RefreshContentEvent());
                 Toast.makeText(CreateJobActivity.this, "Succes", Toast.LENGTH_SHORT).show();
                 CreateJobActivity.this.finish();
             }
@@ -212,5 +218,6 @@ public class CreateJobActivity extends AppCompatActivity {
         difficultyMap.put(Job.TOUGH_DIFFICULTY, 4);
         difficultyMap.put(Job.HARD_CORE_DIFFICULTY, 5);
     }
+
 
 }
