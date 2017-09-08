@@ -178,9 +178,12 @@ public class CreateJobActivity extends AppCompatActivity {
         JobApiCalls.postNewJob(job, new Callback<Job>() {
             @Override
             public void onResponse(Call<Job> call, Response<Job> response) {
-                EventBus.getDefault().post(new RefreshContentEvent());
-                Toast.makeText(CreateJobActivity.this, "Succes", Toast.LENGTH_SHORT).show();
-                CreateJobActivity.this.finish();
+                if (response.isSuccessful()) {
+                    EventBus.getDefault().post(new RefreshContentEvent());
+                    Toast.makeText(CreateJobActivity.this, "Succes", Toast.LENGTH_SHORT).show();
+                    CreateJobActivity.this.finish();
+                }
+                else Toast.makeText(CreateJobActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
